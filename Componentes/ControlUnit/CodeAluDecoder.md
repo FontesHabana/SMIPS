@@ -139,3 +139,20 @@
 | ...             | ...           | ...                                            |
 
 Este enfoque hará que tu ALU Decoder sea limpio y la Unidad de Control principal maneje la complejidad secuencial. ¡Ánimo con el proyecto en Logisim!
+
++------------------+
+ Opcode --|                  |
+(6 bits)  |                  |--> RegDest
+          |                  |--> MemRead
+   Zero --|   MAIN           |--> MemWrite
+  (1 bit) |   CONTROL        |--> ALUOp (3 bits)
+          |   UNIT           |--> ... (Resto de salidas)
+   Sign --|   (FSM)          |
+  (1 bit) |                  |
+          |                  |
+MemReady--|                  |
+  (1 bit) |                  |
+          +------------------+
+             ^            ^
+             |            |
+            CLK         Reset
